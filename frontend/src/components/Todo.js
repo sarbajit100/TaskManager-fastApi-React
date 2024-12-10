@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "http://52.91.203.123/api"
 
 function TodoItems(props){
     const deleteTodoHandler = (title) => {
