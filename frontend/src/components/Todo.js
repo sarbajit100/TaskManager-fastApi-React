@@ -1,9 +1,10 @@
 import React from "react";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function TodoItems(props){
     const deleteTodoHandler = (title) => {
-        axios.delete(`http://localhost:8000/api/todo/${title}`).then(res => console.log(res.data))};
+        axios.delete(`${apiUrl}/${title}`).then(res => console.log(res.data))};
         return (
           <div>
               <p>

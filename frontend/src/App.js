@@ -3,6 +3,7 @@ import axios from 'axios'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import TodoListView from './components/TodoListView';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
   // read all todos
   useEffect(()=> {
-    axios.get('http://localhost:8000/api/todo')
+    axios.get(`${apiUrl}/todo`)
     .then(res => {
       setTodoList(res.data)
     })
@@ -20,7 +21,7 @@ function App() {
 
   // post a todo
   const addTodoHandler = () => {
-    axios.post('http://localhost:8000/api/todo', {'title':title, 'description': desc})
+    axios.post(`${apiUrl}`, {'title':title, 'description': desc})
     .then(res => console.log(res))
   };
   return (
