@@ -3,7 +3,7 @@ import axios from 'axios'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import TodoListView from './components/TodoListView';
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "http://52.91.203.123/api"
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
   // post a todo
   const addTodoHandler = () => {
-    axios.post(`${apiUrl}`, {'title':title, 'description': desc})
+    axios.post(`${apiUrl}/todo`, {'title':title, 'description': desc})
     .then(res => console.log(res))
   };
   return (
