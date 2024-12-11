@@ -4,7 +4,7 @@ const apiUrl = "http://52.91.203.123/api"
 
 function TodoItems(props){
     const deleteTodoHandler = (title) => {
-        axios.delete(`${apiUrl}/${title}`).then(res => console.log(res.data))};
+        axios.delete(`${apiUrl}/todo/${title}`).then(res => console.log(res.data))};
         return (
           <div>
               <p>
