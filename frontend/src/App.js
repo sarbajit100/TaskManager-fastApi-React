@@ -26,26 +26,32 @@ function App() {
       console.error("Error fetching todos:", error);
     }
   };
-
   // Add a new todo
   const addTodoHandler = async () => {
     try {
-      const response = await axios.post(`${apiUrl}/todo`, { title, description: desc });
+      const response = await axios.post(`${apiUrl}/todo`, {
+        title,
+        description: desc,
+      });
       console.log(response.data);
-      setTitle('');
-      setDesc('');
+      setTitle("");
+      setDesc("");
       fetchTodos();
     } catch (error) {
       console.error("Error adding todo:", error);
     }
   };
+
   // Update a todo
   const updateTodoHandler = async () => {
     try {
-      const response = await axios.put(`${apiUrl}/todo/${currentTitle}`, { title: currentTitle, description: desc });
+      const response = await axios.put(`${apiUrl}/todo/${currentTitle}`, {
+        title: title, // Send the new title if updating
+        description: desc,
+      });
       console.log(response.data);
-      setTitle('');
-      setDesc('');
+      setTitle("");
+      setDesc("");
       setUpdateMode(false);
       fetchTodos();
     } catch (error) {
@@ -56,6 +62,7 @@ function App() {
   // Handle edit action
   const handleEdit = (todo) => {
     setCurrentTitle(todo.title);
+    setTitle(todo.title); // Set the title when editing
     setDesc(todo.description);
     setUpdateMode(true);
   };
@@ -88,7 +95,7 @@ function App() {
         </button>
         <h5>Your Tasks</h5>
         <div>
-          <TodoListView todoList={todoList} onEdit={handleEdit} />
+          <TodoListView todoList={todoList} onEdit={handleEdit} fetchTodos={fetchTodos} />
         </div>
     <h6>Copyright 2021, All rights reserved &copy;</h6>
     </span>
